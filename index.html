@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAD Bench Results</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator.min.css" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      --table-scale: 1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: inherit;
+      background: #fffaf6;
+      color: #1f1712;
+    }
+    .page {
+      width: 100%;
+      padding: 16px 20px 24px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .controls-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-col-content,
+    .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+      width: 100%;
+      white-space: nowrap !important;
+      line-height: 1.1;
+    }
+    .toggle-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+    }
+    .toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .toggle input {
+      inline-size: 1rem;
+      block-size: 1rem;
+      margin: 0;
+    }
+    .table-shell {
+      width: 100%;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 40px;
+    }
+    #harness-table {
+      width: max-content;
+      min-width: 0;
+    }
+    .status {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: #5d4032;
+    }
+    .tabulator {
+      width: max-content;
+      font-family: inherit;
+      font-size: calc(0.95rem * var(--table-scale));
+      border: 1px solid #ddd6ce;
+      background: #fffdf9;
+      color: inherit;
+    }
+    .tabulator .tabulator-header {
+      background: #f5e6dc;
+      border-bottom: 1px solid #d8b8a2;
+      color: inherit;
+    }
+    .tabulator .tabulator-header .tabulator-col {
+      font-size: calc(0.95rem * var(--table-scale));
+      font-weight: 600;
+      background: #f5e6dc;
+      border-right: 0 !important;
+      transition: background-color 120ms ease;
+    }
+    .tabulator .tabulator-header .tabulator-col:hover {
+      background: #eed8c9;
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-header-filter {
+      margin-top: calc(0.35rem * var(--table-scale));
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-header-filter input,
+    .tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {
+      width: 100%;
+      padding: calc(0.24rem * var(--table-scale)) calc(0.5rem * var(--table-scale));
+      border: 1px solid #d8b8a2;
+      border-radius: 0;
+      background: #fffdf9;
+      color: inherit;
+      font: inherit;
+    }
+    .tabulator .tabulator-row .tabulator-cell {
+      padding: calc(0.7rem * var(--table-scale)) calc(0.8rem * var(--table-scale));
+      border-right: 0 !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+    .tabulator .tabulator-row {
+      background: #fffdf9;
+      border-bottom: 1px solid #eee3da;
+    }
+    .tabulator .tabulator-row:nth-child(even) {
+      background: #fff8ef;
+    }
+    .tabulator .tabulator-row:hover {
+      background: #f4e3d6;
+    }
+    @media (max-width: 640px) {
+      :root {
+        font-size: 16px;
+      }
+      .page {
+        padding: 8px 8px 16px;
+      }
+      .controls {
+        gap: 8px 12px;
+        margin-bottom: 10px;
+      }
+      .toggle-list {
+        gap: 8px 12px;
+      }
+      .toggle {
+        gap: 0.35rem;
+        font-size: 0.85rem;
+      }
+      .toggle input {
+        inline-size: 0.9rem;
+        block-size: 0.9rem;
+      }
+      .tabulator {
+        width: 100%;
+        font-size: calc(0.82rem * var(--table-scale));
+      }
+      .tabulator .tabulator-header .tabulator-col {
+        font-size: calc(0.8rem * var(--table-scale));
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-col-content {
+        padding: 4px 1px 4px 3px;
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-header-filter input,
+      .tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {
+        padding: calc(0.16rem * var(--table-scale)) calc(0.18rem * var(--table-scale));
+      }
+      .tabulator .tabulator-tableholder {
+        overflow-x: auto !important;
+        overscroll-behavior-x: contain;
+        touch-action: pan-x pan-y;
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-sorter,
+      .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-sorter .tabulator-arrow {
+        display: none !important;
+      }
+      .tabulator .tabulator-row .tabulator-cell {
+        padding: calc(0.4rem * var(--table-scale)) calc(0.22rem * var(--table-scale));
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #18120e;
+        color: #f3e6da;
+      }
+      .tabulator {
+        background: #18120e;
+        border-color: #6f4a34;
+        color: #f3e6da;
+      }
+      .tabulator .tabulator-header {
+        background: #302118;
+        border-bottom-color: #7a5239;
+        color: #f7e6d7;
+      }
+      .tabulator .tabulator-header .tabulator-col {
+        background: #302118;
+      }
+      .tabulator .tabulator-header .tabulator-col:hover,
+      .tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover {
+        background: #3b281d !important;
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-header-filter input,
+      .tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {
+        background: #18120e;
+        border-color: #6f4a34;
+        color: #f3e6da;
+      }
+      .tabulator .tabulator-tableholder .tabulator-table {
+        background: #18120e;
+        color: #f3e6da;
+      }
+      .tabulator .tabulator-row {
+        background: #18120e;
+        border-bottom-color: #2b2019;
+      }
+      .tabulator .tabulator-row:nth-child(even) {
+        background: #1f1712;
+      }
+      .tabulator .tabulator-row:hover {
+        background: #2b2019;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="controls" id="controls">
+      <div class="toggle-list">
+        <label class="toggle"><input type="checkbox" data-column-toggle="company">Company</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="model">Model</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="agent">Agent</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="web_access">Internet</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="overall">Overall</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="easy">Easy</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="medium">Medium</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="hard">Hard</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="insane">Insane</label>
+      </div>
+    </div>
+    <div class="status" id="table-status">Loading results...</div>
+    <div class="table-shell">
+      <div id="harness-table"></div>
+    </div>
+  </div>
+
+  <script id="payload" type="application/json">[{"harness_id":"codex/gpt-5.4-web-high","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260404T074542Z","run_name":"codex__gpt-5.4-web-high_20260404T074542Z","task_count":17,"overall":0.7201460666666667,"easy":0.98974,"medium":0.9688587500000001,"hard":0.9453868333333334,"insane":0.291845},{"harness_id":"pi/gpt-5.4-web-high","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260404T072409Z","run_name":"pi__gpt-5.4-web-high_20260404T072409Z","task_count":17,"overall":0.7012893777777778,"easy":0.98974,"medium":0.9688587500000001,"hard":0.8394513333333333,"insane":0.357988},{"harness_id":"codex/gpt-5.4-web-xhigh","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 xhigh","access":"web","web_access":true,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260404T095006Z","run_name":"codex__gpt-5.4-web-xhigh_20260404T095006Z","task_count":17,"overall":0.6759602666666666,"easy":0.98974,"medium":0.9688587500000001,"hard":0.7805883333333332,"insane":0.35297075},{"harness_id":"pi/gpt-5.4-mini-offline-high","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4-mini high","access":"offline","web_access":false,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260405T061947Z","run_name":"pi__gpt-5.4-mini-offline-high_20260405T061947Z","task_count":17,"overall":0.664401888888889,"easy":0.98974,"medium":0.9688587500000001,"hard":0.8223781666666667,"insane":0.27344925},{"harness_id":"codex/gpt-5.4-mini-web-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260402T084812Z","run_name":"codex__gpt-5.4-mini-web-med_20260402T084812Z","task_count":17,"overall":0.6516596666666666,"easy":0.98974,"medium":0.9688587500000001,"hard":0.7966475000000001,"insane":0.26655875},{"harness_id":"codex/gpt-5.4-mini-web-xhigh","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini xhigh","access":"web","web_access":true,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260402T084812Z","run_name":"codex__gpt-5.4-mini-web-xhigh_20260402T084812Z","task_count":17,"overall":0.646699288888889,"easy":0.98974,"medium":0.7851712500000001,"hard":0.828395,"insane":0.30873550000000005},{"harness_id":"pi/gpt-5.4-web-xhigh","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 xhigh","access":"web","web_access":true,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260404T114623Z","run_name":"pi__gpt-5.4-web-xhigh_20260404T114623Z","task_count":17,"overall":0.6462686444444444,"easy":0.98974,"medium":0.9688587500000001,"hard":0.8868748333333333,"insane":0.14989075000000002},{"harness_id":"codex/gpt-5.4-mini-offline-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260402T101654Z","run_name":"codex__gpt-5.4-mini-offline-med_20260402T101654Z","task_count":17,"overall":0.6444260666666667,"easy":0.6564066666666667,"medium":0.9688587500000001,"hard":0.8265101666666667,"insane":0.27511875},{"harness_id":"pi/gpt-5.4-offline-xhigh","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 xhigh","access":"offline","web_access":false,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260404T181302Z","run_name":"pi__gpt-5.4-offline-xhigh_20260404T181302Z","task_count":17,"overall":0.6419380444444445,"easy":0.98974,"medium":0.9688587500000001,"hard":0.8396796666666667,"insane":0.1908055},{"harness_id":"pi/gpt-5.4-web-low","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260404T052551Z","run_name":"pi__gpt-5.4-web-low_20260404T052551Z","task_count":17,"overall":0.6340927777777778,"easy":0.98974,"medium":0.9688587500000001,"hard":0.7805691666666666,"insane":0.23524},{"harness_id":"codex/gpt-5.4-mini-web-high","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260404T192947Z","run_name":"codex__gpt-5.4-mini-web-high_20260404T192947Z","task_count":17,"overall":0.6206586444444445,"easy":0.98974,"medium":0.9978130000000001,"hard":0.8037095000000001,"insane":0.1569465},{"harness_id":"openai/gpt-5.4-offline-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4 medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T113311Z","run_name":"openai__gpt-5.4-offline-med_20260404T113311Z","task_count":17,"overall":0.6161702444444446,"easy":0.98974,"medium":0.9688587500000001,"hard":0.7687981666666667,"insane":0.19807524999999998},{"harness_id":"pi/gpt-5.4-web-med","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260404T061625Z","run_name":"pi__gpt-5.4-web-med_20260404T061625Z","task_count":17,"overall":0.5959292666666667,"easy":0.98974,"medium":0.7460457500000001,"hard":0.6618508333333334,"insane":0.37286975},{"harness_id":"pi/gpt-5.4-offline-low","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260404T133923Z","run_name":"pi__gpt-5.4-offline-low_20260404T133923Z","task_count":17,"overall":0.5804244666666667,"easy":0.98974,"medium":0.7460457500000001,"hard":0.7805835,"insane":0.19568825},{"harness_id":"pi/gpt-5.4-offline-med","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4 medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260402T154259Z","run_name":"pi__gpt-5.4-offline-med_20260402T154259Z","task_count":17,"overall":0.5754011333333333,"easy":0.6564066666666667,"medium":0.7470377500000001,"hard":0.8886198333333333,"insane":0.12202325},{"harness_id":"openai/gpt-5.4-web_ci-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4 medium","access":"web_ci","web_access":true,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T153647Z","run_name":"openai__gpt-5.4-web_ci-med_20260404T153647Z","task_count":17,"overall":0.5666836666666668,"easy":0.98974,"medium":0.9688587500000001,"hard":0.7658201666666667,"insane":0.0622445},{"harness_id":"codex/gpt-5.4-offline-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260404T123408Z","run_name":"codex__gpt-5.4-offline-med_20260404T123408Z","task_count":17,"overall":0.5587639999999999,"easy":0.98974,"medium":0.9688587500000001,"hard":0.7018063333333333,"insane":0.111986},{"harness_id":"codex/gpt-5.4-web-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260404T062546Z","run_name":"codex__gpt-5.4-web-med_20260404T062546Z","task_count":17,"overall":0.5579855777777778,"easy":0.98974,"medium":0.7460457500000001,"hard":0.8150158333333333,"insane":0.0938425},{"harness_id":"codex/gpt-5.4-mini-offline-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260404T144402Z","run_name":"codex__gpt-5.4-mini-offline-low_20260404T144402Z","task_count":17,"overall":0.5509826444444444,"easy":0.98974,"medium":0.9688587500000001,"hard":0.6362491666666666,"insane":0.16385275},{"harness_id":"codex/gpt-5.3-codex-spark-web-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.3-codex-spark medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260402T110809Z","run_name":"codex__gpt-5.3-codex-spark-web-med_20260402T110809Z","task_count":17,"overall":0.5468263555555556,"easy":0.98974,"medium":0.80699425,"hard":0.6466306666666667,"insane":0.22141625},{"harness_id":"codex/gpt-5.3-codex-spark-web-high","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.3-codex-spark high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260402T111211Z","run_name":"codex__gpt-5.3-codex-spark-web-high_20260402T111211Z","task_count":17,"overall":0.5316412222222222,"easy":0.98974,"medium":0.9978130000000001,"hard":0.6762294999999999,"insane":0.05},{"harness_id":"codex/gpt-5.3-codex-spark-offline-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.3-codex-spark medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260404T154218Z","run_name":"codex__gpt-5.3-codex-spark-offline-med_20260404T154218Z","task_count":17,"overall":0.5126833333333334,"easy":0.7000000000000001,"medium":0.9978130000000001,"hard":0.6279770000000001,"insane":0.10529125},{"harness_id":"openai/gpt-5.4-offline-high","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4 high","access":"offline","web_access":false,"reasoning_effort":"high","strategy":"one_shot_code","timestamp_utc":"20260404T121110Z","run_name":"openai__gpt-5.4-offline-high_20260404T121110Z","task_count":17,"overall":0.4947260222222222,"easy":0.98974,"medium":0.7478130000000001,"hard":0.7172748333333333,"insane":0.025},{"harness_id":"codex/gpt-5.3-codex-spark-web-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.3-codex-spark low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260402T103733Z","run_name":"codex__gpt-5.3-codex-spark-web-low_20260402T103733Z","task_count":17,"overall":0.4748287333333333,"easy":0.6564066666666667,"medium":0.60207725,"hard":0.6634955,"insane":0.16490849999999999},{"harness_id":"codex/gpt-5.3-codex-spark-web-xhigh","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.3-codex-spark xhigh","access":"web","web_access":true,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260402T115356Z","run_name":"codex__gpt-5.3-codex-spark-web-xhigh_20260402T115356Z","task_count":17,"overall":0.4734798,"easy":0.68974,"medium":0.780108,"hard":0.6553615,"insane":0.07500000000000001},{"harness_id":"codex/gpt-5.4-offline-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260404T115719Z","run_name":"codex__gpt-5.4-offline-low_20260404T115719Z","task_count":17,"overall":0.44313866666666674,"easy":0.98974,"medium":0.42272050000000005,"hard":0.6712413333333335,"insane":0.09424450000000001},{"harness_id":"codex/gpt-5.3-codex-spark-offline-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.3-codex-spark low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260404T144407Z","run_name":"codex__gpt-5.3-codex-spark-offline-low_20260404T144407Z","task_count":17,"overall":0.4400637555555556,"easy":0.98974,"medium":0.55,"hard":0.6188358333333333,"insane":0.08091275},{"harness_id":"openai/gpt-5.4-offline-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4 low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T112524Z","run_name":"openai__gpt-5.4-offline-low_20260404T112524Z","task_count":17,"overall":0.4380328222222222,"easy":0.6564066666666667,"medium":0.5650565000000001,"hard":0.7123225,"insane":0.025},{"harness_id":"openai/gpt-5.4-mini-web_ci-high","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini high","access":"web_ci","web_access":true,"reasoning_effort":"high","strategy":"one_shot_code","timestamp_utc":"20260404T154727Z","run_name":"openai__gpt-5.4-mini-web_ci-high_20260404T154727Z","task_count":17,"overall":0.42422044444444446,"easy":0.3333333333333333,"medium":0.74385875,"hard":0.6743916666666667,"insane":0.0},{"harness_id":"codex/gpt-5.4-mini-web-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260402T084812Z","run_name":"codex__gpt-5.4-mini-web-low_20260402T084812Z","task_count":17,"overall":0.40066473333333325,"easy":0.03333333333333333,"medium":0.62267975,"hard":0.6240821666666666,"insane":0.10718725000000001},{"harness_id":"openai/gpt-5.4-web_ci-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4 low","access":"web_ci","web_access":true,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T151921Z","run_name":"openai__gpt-5.4-web_ci-low_20260404T151921Z","task_count":17,"overall":0.37737204444444444,"easy":0.6564066666666667,"medium":0.72104575,"hard":0.4828033333333334,"insane":0.034606},{"harness_id":"pi/gpt-5.4-mini-web-low","company":"OpenAI","provider":"pi","agent":"pi","model":"gpt-5.4-mini low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260402T161324Z","run_name":"pi__gpt-5.4-mini-web-low_20260402T161324Z","task_count":17,"overall":0.37672222222222224,"easy":0.6564066666666667,"medium":0.522813,"hard":0.4818753333333334,"insane":0.13293875},{"harness_id":"openai/gpt-5.4-mini-offline-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T152818Z","run_name":"openai__gpt-5.4-mini-offline-med_20260404T152818Z","task_count":17,"overall":0.3651778,"easy":0.3333333333333333,"medium":0.47104575000000004,"hard":0.5913835000000001,"insane":0.06373324999999999},{"harness_id":"openai/gpt-5.4-mini-offline-high","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini high","access":"offline","web_access":false,"reasoning_effort":"high","strategy":"one_shot_code","timestamp_utc":"20260404T155151Z","run_name":"openai__gpt-5.4-mini-offline-high_20260404T155151Z","task_count":17,"overall":0.32710071111111105,"easy":0.6564066666666667,"medium":0.49604575000000006,"hard":0.4488643333333333,"insane":0.04389925},{"harness_id":"openai/gpt-5.4-web-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4 low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T052706Z","run_name":"openai__gpt-5.4-web-low_20260404T052706Z","task_count":17,"overall":0.3123845333333334,"easy":0.3230733333333333,"medium":0.7478130000000001,"hard":0.35031000000000007,"insane":0.05},{"harness_id":"openai/gpt-5.4-mini-web-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T143317Z","run_name":"openai__gpt-5.4-mini-web-low_20260404T143317Z","task_count":17,"overall":0.2071202666666667,"easy":0.3666666666666667,"medium":0.272813,"hard":0.33543933333333337,"insane":0.0},{"harness_id":"openai/gpt-5.4-mini-web-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T143750Z","run_name":"openai__gpt-5.4-mini-web-med_20260404T143750Z","task_count":17,"overall":0.17084631111111112,"easy":0.0,"medium":0.247813,"hard":0.3169766666666667,"insane":0.0},{"harness_id":"openai/gpt-5.4-mini-web_ci-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini medium","access":"web_ci","web_access":true,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T152855Z","run_name":"openai__gpt-5.4-mini-web_ci-med_20260404T152855Z","task_count":17,"overall":0.14528684444444445,"easy":0.3333333333333333,"medium":0.30000000000000004,"hard":0.152106,"insane":0.025},{"harness_id":"openai/gpt-5.4-nano-offline-high","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano high","access":"offline","web_access":false,"reasoning_effort":"high","strategy":"one_shot_code","timestamp_utc":"20260404T154357Z","run_name":"openai__gpt-5.4-nano-offline-high_20260404T154357Z","task_count":17,"overall":0.07483715555555555,"easy":0.0,"medium":0.0,"hard":0.16487066666666667,"insane":0.025},{"harness_id":"openai/gpt-5.4-nano-offline-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T152931Z","run_name":"openai__gpt-5.4-nano-offline-med_20260404T152931Z","task_count":17,"overall":0.04627755555555556,"easy":0.3230733333333333,"medium":0.0,"hard":0.06184833333333333,"insane":0.0},{"harness_id":"openai/gpt-5.4-nano-web-high","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"one_shot_code","timestamp_utc":"20260404T145107Z","run_name":"openai__gpt-5.4-nano-web-high_20260404T145107Z","task_count":17,"overall":0.044444444444444446,"easy":0.0,"medium":0.25,"hard":0.0,"insane":0.0},{"harness_id":"openai/gpt-5.4-mini-web_ci-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-mini low","access":"web_ci","web_access":true,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T151924Z","run_name":"openai__gpt-5.4-mini-web_ci-low_20260404T151924Z","task_count":17,"overall":0.03333333333333333,"easy":0.3333333333333333,"medium":0.025,"hard":0.016666666666666666,"insane":0.0},{"harness_id":"openai/gpt-5.4-nano-offline-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T151930Z","run_name":"openai__gpt-5.4-nano-offline-low_20260404T151930Z","task_count":17,"overall":0.008888888888888889,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.025},{"harness_id":"openai/gpt-5.4-nano-web-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T143317Z","run_name":"openai__gpt-5.4-nano-web-low_20260404T143317Z","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"openai/gpt-5.4-nano-web-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T143742Z","run_name":"openai__gpt-5.4-nano-web-med_20260404T143742Z","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"openai/gpt-5.4-nano-web_ci-low","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano low","access":"web_ci","web_access":true,"reasoning_effort":"low","strategy":"one_shot_code","timestamp_utc":"20260404T151926Z","run_name":"openai__gpt-5.4-nano-web_ci-low_20260404T151926Z","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"openai/gpt-5.4-nano-web_ci-med","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-nano medium","access":"web_ci","web_access":true,"reasoning_effort":"medium","strategy":"one_shot_code","timestamp_utc":"20260404T152839Z","run_name":"openai__gpt-5.4-nano-web_ci-med_20260404T152839Z","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0}]</script>
+  <script src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
+  <script>
+    const allHarnesses = JSON.parse(document.getElementById("payload").textContent);
+    let harnessTable = null;
+    const tableStatus = document.getElementById("table-status");
+    const columnToggles = Array.from(document.querySelectorAll("[data-column-toggle]"));
+
+    function percentText(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) {
+        return "";
+      }
+      const percent = number * 100;
+      if (percent >= 99.9) {
+        return "100%";
+      }
+      return `${percent.toFixed(1)}%`;
+    }
+
+    function scoreFormatter(cell) {
+      const value = Number(cell.getValue() || 0);
+      return percentText(value);
+    }
+
+    function yesNoText(value) {
+      return value ? "" : "✓";
+    }
+
+    function yesNoFormatter(cell) {
+      return yesNoText(Boolean(cell.getValue()));
+    }
+
+    function textHeaderFilter(headerValue, rowValue) {
+      const needle = String(headerValue || "").trim().toLowerCase();
+      if (!needle) {
+        return true;
+      }
+      return String(rowValue ?? "").toLowerCase().includes(needle);
+    }
+
+    function percentHeaderFilter(headerValue, rowValue) {
+      const needle = String(headerValue || "").trim().toLowerCase();
+      if (!needle) {
+        return true;
+      }
+      return percentText(rowValue).toLowerCase().includes(needle);
+    }
+
+    function booleanHeaderFilter(headerValue, rowValue) {
+      const needle = String(headerValue || "").trim().toLowerCase();
+      if (!needle) {
+        return true;
+      }
+      if (["yes", "y", "true", "1", "check", "checked", "offline", "no web", "no checks", "✓"].includes(needle)) {
+        return !Boolean(rowValue);
+      }
+      if (["no", "n", "false", "0", "uncheck", "unchecked", "web", "with web", "blank", "empty"].includes(needle)) {
+        return Boolean(rowValue);
+      }
+      return false;
+    }
+
+    const baseColumnSpecs = [
+      {title: "Company", field: "company", minWidth: 88, widthGrow: 1, widthShrink: 1, headerFilter: "input", headerFilterFunc: textHeaderFilter},
+      {title: "Model", field: "model", minWidth: 128, widthGrow: 5, widthShrink: 3, headerFilter: "input", headerFilterFunc: textHeaderFilter},
+      {title: "Agent", field: "agent", minWidth: 60, widthGrow: 1, widthShrink: 2, headerFilter: "input", headerFilterFunc: textHeaderFilter},
+      {title: "Internet", field: "web_access", formatter: yesNoFormatter, minWidth: 54, widthGrow: 0, widthShrink: 1, hozAlign: "center", headerHozAlign: "center", headerFilter: "input", headerFilterFunc: booleanHeaderFilter},
+      {title: "Overall", field: "overall", sorter: "number", formatter: scoreFormatter, minWidth: 68, width: 76, widthGrow: 0, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+      {title: "Easy", field: "easy", sorter: "number", formatter: scoreFormatter, minWidth: 70, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+      {title: "Medium", field: "medium", sorter: "number", formatter: scoreFormatter, minWidth: 74, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+      {title: "Hard", field: "hard", sorter: "number", formatter: scoreFormatter, minWidth: 70, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+      {title: "Insane", field: "insane", sorter: "number", formatter: scoreFormatter, minWidth: 76, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+    ];
+    const baseDefaultFields = ["model", "agent", "web_access", "overall", "easy", "medium", "hard", "insane"];
+    const compactDefaultFields = ["model", "agent", "web_access", "overall"];
+    const mobileDefaultFields = ["model", "agent", "web_access", "overall"];
+    const columnPrefsKey = "cad_bench_visible_columns";
+    let userCustomizedColumns = false;
+    let tableScale = 1;
+    let fontsReadyApplied = false;
+    const widthMeasureCanvas = document.createElement("canvas");
+    const widthMeasureContext = widthMeasureCanvas.getContext("2d");
+
+    function isMobileScreen() {
+      return window.matchMedia("(max-width: 640px)").matches;
+    }
+
+    function tableAvailableWidth() {
+      const shell = document.querySelector(".table-shell");
+      return Math.max(
+        0,
+        Math.floor(shell?.clientWidth || window.innerWidth || 0),
+      );
+    }
+
+    function rootFontSizePx() {
+      return Number.parseFloat(getComputedStyle(document.documentElement).fontSize || "16") || 16;
+    }
+
+    function bodyFontSizePx(scale = tableScale) {
+      return rootFontSizePx() * (isMobileScreen() ? 0.82 : 0.95) * scale;
+    }
+
+    function headerFontSizePx(scale = tableScale) {
+      return rootFontSizePx() * (isMobileScreen() ? 0.8 : 0.95) * scale;
+    }
+
+    function horizontalCellPaddingPx(scale = tableScale) {
+      return rootFontSizePx() * (isMobileScreen() ? 0.5 : 1.6) * scale;
+    }
+
+    function horizontalHeaderPaddingPx(scale = tableScale) {
+      return rootFontSizePx() * (isMobileScreen() ? 0.35 : 1.6) * scale;
+    }
+
+    function measureTextWidth(text, font) {
+      if (!widthMeasureContext) {
+        return String(text || "").length * 8;
+      }
+      widthMeasureContext.font = font;
+      return widthMeasureContext.measureText(String(text || "")).width;
+    }
+
+    function bodyFont(scale = tableScale) {
+      return `400 ${bodyFontSizePx(scale)}px ${getComputedStyle(document.body).fontFamily}`;
+    }
+
+    function headerFont(scale = tableScale) {
+      return `600 ${headerFontSizePx(scale)}px ${getComputedStyle(document.body).fontFamily}`;
+    }
+
+    function displayTextForField(field, value) {
+      if (field === "overall" || field === "easy" || field === "medium" || field === "hard" || field === "insane") {
+        return percentText(value);
+      }
+      if (field === "web_access") {
+        return yesNoText(Boolean(value)) || " ";
+      }
+      return String(value ?? "");
+    }
+
+    function contentWidthForSpec(spec, scale = tableScale) {
+      const headerWidth = measureTextWidth(spec.title, headerFont(scale));
+      const valueWidth = allHarnesses.reduce((maxWidth, row) => {
+        return Math.max(maxWidth, measureTextWidth(displayTextForField(spec.field, row?.[spec.field]), bodyFont(scale)));
+      }, 0);
+      return Math.ceil(Math.max(headerWidth + horizontalHeaderPaddingPx(scale), valueWidth + horizontalCellPaddingPx(scale)));
+    }
+
+    function resolvedWidthForSpec(spec, scale = tableScale) {
+      const minWidth = isMobileScreen() ? 0 : Number(spec.minWidth || 0) * scale;
+      const fixedWidth = isMobileScreen() ? 0 : Number(spec.width || 0) * scale;
+      const maxWidth = isMobileScreen() ? 0 : Number(spec.maxWidth || 0) * scale;
+      let width = Math.max(minWidth, fixedWidth, contentWidthForSpec(spec, scale));
+      if (maxWidth) {
+        width = Math.min(width, maxWidth);
+      }
+      return Math.ceil(width);
+    }
+
+    function minimumWidthForFields(fields, scale = tableScale) {
+      const enabled = new Set(fields);
+      return baseColumnSpecs
+        .filter((spec) => enabled.has(spec.field))
+        .reduce((sum, spec) => sum + resolvedWidthForSpec(spec, scale), 0);
+    }
+
+    function mobileScaleForFields(fields) {
+      const availableWidth = tableAvailableWidth();
+      if (!availableWidth) {
+        return 1;
+      }
+      const baseWidth = minimumWidthForFields(fields, 1);
+      if (!baseWidth) {
+        return 1;
+      }
+      return Math.max(0.62, Math.min(1, availableWidth / baseWidth));
+    }
+
+    function applyTableScale(scale) {
+      tableScale = scale;
+      document.documentElement.style.setProperty("--table-scale", scale.toFixed(4));
+    }
+
+    function canFitFields(fields) {
+      const availableWidth = tableAvailableWidth();
+      if (!availableWidth) {
+        return true;
+      }
+      return minimumWidthForFields(fields) <= availableWidth;
+    }
+
+    function preferredDefaultFields() {
+      if (isMobileScreen()) {
+        return mobileDefaultFields;
+      }
+      return canFitFields(baseDefaultFields) ? baseDefaultFields : compactDefaultFields;
+    }
+
+    function setToggleState(fields) {
+      const enabledFields = new Set(fields);
+      for (const toggle of columnToggles) {
+        toggle.checked = enabledFields.has(toggle.dataset.columnToggle);
+      }
+    }
+
+    function validSavedFields(fields) {
+      if (!Array.isArray(fields) || !fields.length) {
+        return [];
+      }
+      const knownFields = new Set(baseColumnSpecs.map((spec) => spec.field));
+      return fields.filter((field) => knownFields.has(String(field)));
+    }
+
+    function loadSavedColumnFields() {
+      const raw = window.localStorage.getItem(columnPrefsKey);
+      if (!raw) {
+        return [];
+      }
+      return validSavedFields(JSON.parse(raw));
+    }
+
+    function saveActiveColumnFields() {
+      window.localStorage.setItem(columnPrefsKey, JSON.stringify(activeColumnFields()));
+    }
+
+    function applyInitialToggleState() {
+      const savedFields = loadSavedColumnFields();
+      if (savedFields.length) {
+        userCustomizedColumns = true;
+        setToggleState(savedFields);
+        return;
+      }
+      setToggleState(preferredDefaultFields());
+    }
+
+    function activeColumnFields() {
+      return columnToggles
+        .filter((toggle) => toggle.checked)
+        .map((toggle) => toggle.dataset.columnToggle);
+    }
+
+    function activeColumnSpecs() {
+      const fields = new Set(activeColumnFields());
+      const specs = baseColumnSpecs
+        .filter((spec) => fields.has(spec.field))
+        .map((spec) => ({...spec}));
+      if (!isMobileScreen()) {
+        applyTableScale(1);
+        return specs.map((spec) => {
+          const desktopSpec = {...spec};
+          delete desktopSpec.maxWidth;
+          if (desktopSpec.field === "model") {
+            desktopSpec.minWidth = 280;
+            desktopSpec.widthGrow = 7;
+            desktopSpec.widthShrink = 1;
+            delete desktopSpec.width;
+          } else if (desktopSpec.field === "agent") {
+            desktopSpec.minWidth = Math.max(90, Number(desktopSpec.minWidth || 0));
+            desktopSpec.widthGrow = 1;
+            desktopSpec.widthShrink = 1;
+            delete desktopSpec.width;
+          } else if (desktopSpec.field === "web_access") {
+            desktopSpec.minWidth = 104;
+            desktopSpec.width = 104;
+            desktopSpec.widthGrow = 0;
+            desktopSpec.widthShrink = 1;
+          } else {
+            desktopSpec.minWidth = Math.max(92, Number(desktopSpec.minWidth || 0));
+            desktopSpec.widthGrow = 1;
+            desktopSpec.widthShrink = 1;
+            delete desktopSpec.width;
+          }
+          return desktopSpec;
+        });
+      }
+      const scale = mobileScaleForFields([...fields]);
+      applyTableScale(scale);
+      return specs.map((spec) => {
+        const width = resolvedWidthForSpec(spec, scale);
+        return {
+          ...spec,
+          width,
+          minWidth: width,
+          maxWidth: width,
+          widthGrow: 0,
+          widthShrink: 0,
+        };
+      });
+    }
+
+    let tableReady = false;
+
+    function buildTable() {
+      applyInitialToggleState();
+      harnessTable = new Tabulator("#harness-table", {
+        data: allHarnesses,
+        layout: "fitData",
+        index: "harness_id",
+        initialSort: [{column: "overall", dir: "desc"}],
+        downloadRowRange: "active",
+        columnDefaults: {
+          headerHozAlign: "left",
+          vertAlign: "middle",
+        },
+        columns: activeColumnSpecs(),
+      });
+      harnessTable.on("tableBuilt", () => {
+        tableReady = true;
+        tableStatus.textContent = `Showing ${allHarnesses.length} published harnesses`;
+        syncAfterFontsReady();
+        syncOptionalColumns();
+      });
+    }
+
+    function syncOptionalColumns() {
+      if (!tableReady || !harnessTable) {
+        return;
+      }
+      Promise.resolve(harnessTable.setColumns(activeColumnSpecs())).then(() => harnessTable.redraw(true));
+    }
+
+    function syncAfterFontsReady() {
+      if (fontsReadyApplied || !document.fonts?.ready) {
+        return;
+      }
+      document.fonts.ready.then(() => {
+        fontsReadyApplied = true;
+        syncOptionalColumns();
+      });
+    }
+
+    for (const toggle of columnToggles) {
+      toggle.addEventListener("change", () => {
+        userCustomizedColumns = true;
+        saveActiveColumnFields();
+        syncOptionalColumns();
+      });
+    }
+    window.addEventListener("resize", () => {
+      if (!tableReady || !harnessTable) {
+        return;
+      }
+      if (!userCustomizedColumns) {
+        const preferredFields = preferredDefaultFields();
+        const activeFields = activeColumnFields();
+        if (preferredFields.join("|") !== activeFields.join("|")) {
+          setToggleState(preferredFields);
+          syncOptionalColumns();
+          return;
+        }
+      }
+      harnessTable.redraw(true);
+    });
+    buildTable();
+  </script>
+</body>
+</html>
