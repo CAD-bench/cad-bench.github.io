@@ -245,20 +245,16 @@
         <label class="toggle"><input type="checkbox" data-column-toggle="insane">Insane</label>
       </div>
     </div>
-    <div class="status" id="table-status">Loading results...</div>
-    <div class="status">Published harnesses: 1</div>
-    <div class="status">Last sync: 2026-04-17 05:04 UTC</div>
     <div class="table-shell">
       <div id="harness-table"></div>
     </div>
   </div>
 
-  <script id="payload" type="application/json">[{"harness_id":"openai/gpt-5.4-pro-web_ci-xhigh","company":"OpenAI","provider":"openai","agent":"none","model":"gpt-5.4-pro xhigh","access":"web_ci","web_access":true,"reasoning_effort":"xhigh","strategy":"one_shot_code","timestamp_utc":"20260412T072747Z","run_name":"openai__gpt-5.4-pro-web_ci-xhigh_20260412T072747Z_2128155","task_count":1,"overall":1.0,"easy":1.0,"medium":0.0,"hard":0.0,"insane":0.0}]</script>
+  <script id="payload" type="application/json">[]</script>
   <script src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
   <script>
     const allHarnesses = JSON.parse(document.getElementById("payload").textContent);
     let harnessTable = null;
-    const tableStatus = document.getElementById("table-status");
     const columnToggles = Array.from(document.querySelectorAll("[data-column-toggle]"));
 
     function percentText(value) {
@@ -563,7 +559,6 @@
       });
       harnessTable.on("tableBuilt", () => {
         tableReady = true;
-        tableStatus.textContent = `Showing ${allHarnesses.length} published harnesses`;
         syncAfterFontsReady();
         syncOptionalColumns();
       });
