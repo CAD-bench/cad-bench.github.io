@@ -239,6 +239,8 @@
         <label class="toggle"><input type="checkbox" data-column-toggle="agent">Agent</label>
         <label class="toggle"><input type="checkbox" data-column-toggle="web_access">Internet</label>
         <label class="toggle"><input type="checkbox" data-column-toggle="overall">Overall</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="estimated_cost_usd">Cost</label>
+        <label class="toggle"><input type="checkbox" data-column-toggle="total_tokens">Tokens</label>
         <label class="toggle"><input type="checkbox" data-column-toggle="easy">Easy</label>
         <label class="toggle"><input type="checkbox" data-column-toggle="medium">Medium</label>
         <label class="toggle"><input type="checkbox" data-column-toggle="hard">Hard</label>
@@ -250,7 +252,7 @@
     </div>
   </div>
 
-  <script id="payload" type="application/json">[{"harness_id":"codex/gpt-5.4-mini-web-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260417T213801Z","run_name":"codex__gpt-5.4-mini-web-low_20260417T213801Z_4109278","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"codex/gpt-5.4-offline-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260417T211547Z","run_name":"codex__gpt-5.4-offline-low_20260417T211547Z_4096165","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"codex/gpt-5.4-offline-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260417T230811Z","run_name":"codex__gpt-5.4-offline-med_20260417T230811Z_4139981","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"codex/gpt-5.4-web-high","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260417T201551Z","run_name":"codex__gpt-5.4-web-high_20260417T201551Z_4087396","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"codex/gpt-5.4-web-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260417T193505Z","run_name":"codex__gpt-5.4-web-low_20260417T193505Z_4076954","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"codex/gpt-5.4-web-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260417T193507Z","run_name":"codex__gpt-5.4-web-med_20260417T193507Z_4076963","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0},{"harness_id":"codex/gpt-5.4-web-xhigh","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 xhigh","access":"web","web_access":true,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260417T202353Z","run_name":"codex__gpt-5.4-web-xhigh_20260417T202353Z_4088374","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0}]</script>
+  <script id="payload" type="application/json">[{"harness_id":"codex/gpt-5.4-mini-web-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4-mini low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260417T213801Z","run_name":"codex__gpt-5.4-mini-web-low_20260417T213801Z_4109278","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":925729,"cached_input_tokens":838784,"output_tokens":34110,"total_tokens":959839,"estimated_cost_usd":0.282295,"cost_is_precise":true},{"harness_id":"codex/gpt-5.4-offline-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 low","access":"offline","web_access":false,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260417T211547Z","run_name":"codex__gpt-5.4-offline-low_20260417T211547Z_4096165","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":796265,"cached_input_tokens":630656,"output_tokens":40245,"total_tokens":836510,"estimated_cost_usd":1.175362,"cost_is_precise":true},{"harness_id":"codex/gpt-5.4-offline-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 medium","access":"offline","web_access":false,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260417T230811Z","run_name":"codex__gpt-5.4-offline-med_20260417T230811Z_4139981","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":974896,"cached_input_tokens":828288,"output_tokens":33030,"total_tokens":1007926,"estimated_cost_usd":1.069042,"cost_is_precise":true},{"harness_id":"codex/gpt-5.4-web-high","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 high","access":"web","web_access":true,"reasoning_effort":"high","strategy":"agent_step","timestamp_utc":"20260417T201551Z","run_name":"codex__gpt-5.4-web-high_20260417T201551Z_4087396","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":1788735,"cached_input_tokens":1337984,"output_tokens":88897,"total_tokens":1877632,"estimated_cost_usd":2.794828,"cost_is_precise":true},{"harness_id":"codex/gpt-5.4-web-low","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 low","access":"web","web_access":true,"reasoning_effort":"low","strategy":"agent_step","timestamp_utc":"20260417T193505Z","run_name":"codex__gpt-5.4-web-low_20260417T193505Z_4076954","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":764996,"cached_input_tokens":611968,"output_tokens":14727,"total_tokens":779723,"estimated_cost_usd":0.756467,"cost_is_precise":true},{"harness_id":"codex/gpt-5.4-web-med","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 medium","access":"web","web_access":true,"reasoning_effort":"medium","strategy":"agent_step","timestamp_utc":"20260417T193507Z","run_name":"codex__gpt-5.4-web-med_20260417T193507Z_4076963","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":1098841,"cached_input_tokens":834944,"output_tokens":45308,"total_tokens":1144149,"estimated_cost_usd":1.548098,"cost_is_precise":true},{"harness_id":"codex/gpt-5.4-web-xhigh","company":"OpenAI","provider":"codex","agent":"codex","model":"gpt-5.4 xhigh","access":"web","web_access":true,"reasoning_effort":"xhigh","strategy":"agent_step","timestamp_utc":"20260417T202353Z","run_name":"codex__gpt-5.4-web-xhigh_20260417T202353Z_4088374","task_count":17,"overall":0.0,"easy":0.0,"medium":0.0,"hard":0.0,"insane":0.0,"input_tokens":4479663,"cached_input_tokens":2871168,"output_tokens":354867,"total_tokens":4834530,"estimated_cost_usd":10.062034,"cost_is_precise":true}]</script>
   <script src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
   <script>
     const allHarnesses = JSON.parse(document.getElementById("payload").textContent);
@@ -269,9 +271,42 @@
       return `${percent.toFixed(1)}%`;
     }
 
+    function numberText(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) {
+        return "";
+      }
+      return new Intl.NumberFormat("en-US").format(Math.round(number));
+    }
+
+    function usdText(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) {
+        return "";
+      }
+      if (number >= 100) {
+        return `$${number.toFixed(0)}`;
+      }
+      if (number >= 10) {
+        return `$${number.toFixed(1)}`;
+      }
+      if (number >= 1) {
+        return `$${number.toFixed(2)}`;
+      }
+      return `$${number.toFixed(3)}`;
+    }
+
     function scoreFormatter(cell) {
       const value = Number(cell.getValue() || 0);
       return percentText(value);
+    }
+
+    function numberFormatter(cell) {
+      return numberText(cell.getValue());
+    }
+
+    function usdFormatter(cell) {
+      return usdText(cell.getValue());
     }
 
     function yesNoText(value) {
@@ -298,6 +333,22 @@
       return percentText(rowValue).toLowerCase().includes(needle);
     }
 
+    function numberHeaderFilter(headerValue, rowValue) {
+      const needle = String(headerValue || "").trim().toLowerCase();
+      if (!needle) {
+        return true;
+      }
+      return numberText(rowValue).toLowerCase().includes(needle);
+    }
+
+    function usdHeaderFilter(headerValue, rowValue) {
+      const needle = String(headerValue || "").trim().toLowerCase();
+      if (!needle) {
+        return true;
+      }
+      return usdText(rowValue).toLowerCase().includes(needle);
+    }
+
     function booleanHeaderFilter(headerValue, rowValue) {
       const needle = String(headerValue || "").trim().toLowerCase();
       if (!needle) {
@@ -318,14 +369,16 @@
       {title: "Agent", field: "agent", minWidth: 60, widthGrow: 1, widthShrink: 2, headerFilter: "input", headerFilterFunc: textHeaderFilter},
       {title: "Internet", field: "web_access", formatter: yesNoFormatter, minWidth: 54, widthGrow: 0, widthShrink: 1, hozAlign: "center", headerHozAlign: "center", headerFilter: "input", headerFilterFunc: booleanHeaderFilter},
       {title: "Overall", field: "overall", sorter: "number", formatter: scoreFormatter, minWidth: 68, width: 76, widthGrow: 0, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+      {title: "Cost", field: "estimated_cost_usd", sorter: "number", formatter: usdFormatter, minWidth: 68, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: usdHeaderFilter},
+      {title: "Tokens", field: "total_tokens", sorter: "number", formatter: numberFormatter, minWidth: 86, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: numberHeaderFilter},
       {title: "Easy", field: "easy", sorter: "number", formatter: scoreFormatter, minWidth: 70, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
       {title: "Medium", field: "medium", sorter: "number", formatter: scoreFormatter, minWidth: 74, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
       {title: "Hard", field: "hard", sorter: "number", formatter: scoreFormatter, minWidth: 70, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
       {title: "Insane", field: "insane", sorter: "number", formatter: scoreFormatter, minWidth: 76, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
     ];
-    const baseDefaultFields = ["model", "agent", "web_access", "overall", "easy", "medium", "hard", "insane"];
-    const compactDefaultFields = ["model", "agent", "web_access", "overall"];
-    const mobileDefaultFields = ["model", "agent", "web_access", "overall"];
+    const baseDefaultFields = ["model", "agent", "web_access", "overall", "estimated_cost_usd", "easy", "medium", "hard", "insane"];
+    const compactDefaultFields = ["model", "agent", "web_access", "overall", "estimated_cost_usd"];
+    const mobileDefaultFields = ["model", "agent", "web_access", "overall", "estimated_cost_usd"];
     const columnPrefsKey = "cad_bench_visible_columns";
     let userCustomizedColumns = false;
     let tableScale = 1;
@@ -384,6 +437,12 @@
     function displayTextForField(field, value) {
       if (field === "overall" || field === "easy" || field === "medium" || field === "hard" || field === "insane") {
         return percentText(value);
+      }
+      if (field === "estimated_cost_usd") {
+        return usdText(value);
+      }
+      if (field === "total_tokens") {
+        return numberText(value);
       }
       if (field === "web_access") {
         return yesNoText(Boolean(value)) || " ";
