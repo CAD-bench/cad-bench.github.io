@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "23c69ce7100fd47309475dcad3eee6d16303f13d",
+    "path_in_repo": "evals/harnesses/pi__gpt-5.4-web-low_20260418T212638Z_280385/report.json"
+  }
+]
