@@ -2,25 +2,7 @@
   {
     "kind": "hf_report",
     "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "23c69ce7100fd47309475dcad3eee6d16303f13d",
-    "path_in_repo": "evals/harnesses/pi__gpt-5.4-web-low_20260418T212638Z_280385/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "a0407e4443e5bba8801495da7d196e69318fbc1d",
-    "path_in_repo": "evals/harnesses/pi__gpt-5.4-web-med_20260418T212648Z_280376/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "a0407e4443e5bba8801495da7d196e69318fbc1d",
-    "path_in_repo": "evals/harnesses/pi__gpt-5.4-web-high_20260418T212635Z_280422/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "c79cc575cc457ae2e2a17a810f9444a25b3e9946",
+    "revision": "87ed7c1ad97dfc06ab8622d939bfacf2853dff80",
     "path_in_repo": "evals/harnesses/pi__gpt-5.4-offline-low_20260419T061026Z_383966/report.json"
   },
   {
@@ -38,7 +20,7 @@
   {
     "kind": "hf_report",
     "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "ad68287d9051e0ed61159bfa593bc4b4d8313aa4",
+    "revision": "87ed7c1ad97dfc06ab8622d939bfacf2853dff80",
     "path_in_repo": "evals/harnesses/pi__gpt-5.4-mini-web-low_20260419T064631Z_413438/report.json"
   }
 ]
