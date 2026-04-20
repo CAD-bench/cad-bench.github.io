@@ -56,7 +56,7 @@
   {
     "kind": "hf_report",
     "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "5ca2737edaed7be21ce207ea2f54f657c5d49a16",
+    "revision": "46099949508ba0abe7d4dcaaae009cb6bf0aa38a",
     "path_in_repo": "evals/harnesses/codex__gpt-5.4-web-low_20260419T190502Z_603630/report.json"
   },
   {
