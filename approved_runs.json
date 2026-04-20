@@ -76,5 +76,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "273a450a902004e98b801c9ed02c6403022d6426",
     "path_in_repo": "evals/harnesses/codex__gpt-5.4-mini-web-low_20260420T000933Z_677450/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "46099949508ba0abe7d4dcaaae009cb6bf0aa38a",
+    "path_in_repo": "evals/harnesses/pi__gpt-5.4-web-low_20260420T050618Z_759293/report.json"
   }
 ]
