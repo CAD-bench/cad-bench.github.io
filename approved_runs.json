@@ -32,7 +32,7 @@
   {
     "kind": "hf_report",
     "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "121f47d2a0459481c41e5a5d97b6077104ebe202",
+    "revision": "d980282c7c0558db8b697d6f53617c321ef0e0eb",
     "path_in_repo": "evals/harnesses/codex__gpt-5.4-offline-med_20260419T190604Z_603645/report.json"
   },
   {
