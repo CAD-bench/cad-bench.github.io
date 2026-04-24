@@ -220,5 +220,125 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
     "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-web-high_20260423T014112Z_1527465/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-web-high_20260423T014926Z_1528785/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-offline-high_20260423T051954Z_1550246/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-web-med_20260423T122643Z_1626647/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-offline-med_20260423T180729Z_1655556/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-web_ci-xhigh_20260423T201022Z_1667094/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-offline-xhigh_20260423T204247Z_1672007/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-web_ci-high_20260423T211312Z_1676184/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-offline-high_20260423T214605Z_1680492/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-web_ci-med_20260423T221742Z_1684796/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-offline-med_20260423T224628Z_1689821/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-web_ci-low_20260423T225059Z_1691880/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-offline-low_20260423T225531Z_1693998/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-web_ci-xhigh_20260423T052036Z_1551043/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-offline-xhigh_20260423T052036Z_1551048/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-web_ci-high_20260423T052036Z_1551044/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-offline-high_20260423T052036Z_1551045/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-web_ci-med_20260423T052036Z_1551047/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-offline-med_20260423T052035Z_1551046/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-web_ci-low_20260423T052037Z_1551049/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
+    "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-offline-low_20260423T052035Z_1551050/report.json"
   }
 ]
