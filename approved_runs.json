@@ -352,5 +352,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "92d99335acdd7be12ec0c80e1724aecfcaf2c423",
     "path_in_repo": "evals/harnesses/deepseek__deepseek-v4-pro-offline-none_20260425T193309Z_1878070/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "bec3da3f91cea235c48b90e5b2b0d52c2201dd1d",
+    "path_in_repo": "evals/harnesses/deepseek__deepseek-v4-pro-offline-none_20260426T042645Z_1958729/report.json"
   }
 ]
