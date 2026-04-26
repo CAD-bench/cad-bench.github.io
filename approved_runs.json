@@ -340,5 +340,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
     "path_in_repo": "evals/harnesses/openai__gpt-5.4-mini-offline-low_20260423T052035Z_1551050/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "92d99335acdd7be12ec0c80e1724aecfcaf2c423",
+    "path_in_repo": "evals/harnesses/deepseek__deepseek-v4-flash-offline-none_20260425T205406Z_1890370/report.json"
   }
 ]
