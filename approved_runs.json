@@ -394,23 +394,5 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "cb2313ecf96e815cbb437d03834f9d30c4bd1cc6",
     "path_in_repo": "evals/harnesses/openai__gpt-5.3-codex-spark-offline-low_20260427T022715Z_2111735/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "cb2313ecf96e815cbb437d03834f9d30c4bd1cc6",
-    "path_in_repo": "evals/harnesses/openai__gpt-5.3-codex-spark-offline-med_20260427T023421Z_2115684/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "cb2313ecf96e815cbb437d03834f9d30c4bd1cc6",
-    "path_in_repo": "evals/harnesses/openai__gpt-5.3-codex-spark-offline-high_20260427T024046Z_2118961/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "cb2313ecf96e815cbb437d03834f9d30c4bd1cc6",
-    "path_in_repo": "evals/harnesses/openai__gpt-5.3-codex-spark-offline-xhigh_20260427T024838Z_2122296/report.json"
   }
 ]
