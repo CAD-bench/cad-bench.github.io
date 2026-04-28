@@ -412,5 +412,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "b8340729f3c99638778102fafba43bf921c18af3",
     "path_in_repo": "evals/harnesses/openai__gpt-5.3-codex-spark-offline-xhigh_20260427T024838Z_2122296/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "a1acbc32d510ea4ff5ac44a755c830678f3a4deb",
+    "path_in_repo": "evals/harnesses/openrouter__inclusionai__ling-2.6-1t_free-offline-none_20260428T033043Z_2234914/report.json"
   }
 ]
