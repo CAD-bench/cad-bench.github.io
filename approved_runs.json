@@ -424,5 +424,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "a1acbc32d510ea4ff5ac44a755c830678f3a4deb",
     "path_in_repo": "evals/harnesses/gemini__gemini-3.1-flash-lite-preview-offline-none_20260428T050032Z_2249465/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "9e29b03b9e68ea2cb99cbc309f6a5ad18da90447",
+    "path_in_repo": "evals/harnesses/gemini__gemini-3-flash-preview-offline-none_20260428T121645Z_2280737/report.json"
   }
 ]
