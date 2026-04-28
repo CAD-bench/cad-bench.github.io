@@ -418,5 +418,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "a1acbc32d510ea4ff5ac44a755c830678f3a4deb",
     "path_in_repo": "evals/harnesses/openrouter__inclusionai__ling-2.6-1t_free-offline-none_20260428T033043Z_2234914/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "a1acbc32d510ea4ff5ac44a755c830678f3a4deb",
+    "path_in_repo": "evals/harnesses/openrouter__tencent__hy3-preview_free-offline-none_20260428T035110Z_2240039/report.json"
   }
 ]
