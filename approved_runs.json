@@ -219,12 +219,6 @@
     "kind": "hf_report",
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
-    "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-web-high_20260423T014112Z_1527465/report.json"
-  },
-  {
-    "kind": "hf_report",
-    "repo_id": "oof-baroomf/cad-bench-provenance",
-    "revision": "bab594dce934db320341e2e341b8b26481e8a2c6",
     "path_in_repo": "evals/harnesses/openai__gpt-5.4-pro-web-high_20260423T014926Z_1528785/report.json"
   },
   {
