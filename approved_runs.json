@@ -448,5 +448,11 @@
     "repo_id": "oof-baroomf/cad-bench-provenance",
     "revision": "95fd2674b54f99426ac4848f3f022bc38684784c",
     "path_in_repo": "evals/harnesses/vercel__alibaba__qwen-3.6-max-preview-offline-none_20260430T003706Z_2473332/report.json"
+  },
+  {
+    "kind": "hf_report",
+    "repo_id": "oof-baroomf/cad-bench-provenance",
+    "revision": "f75f0effdc6323528546e18314cb5f4164132fde",
+    "path_in_repo": "evals/harnesses/gemini__gemma-3-27b-it-offline_nodocs-none_20260430T022138Z_2493048/report.json"
   }
 ]
