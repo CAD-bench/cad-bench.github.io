@@ -1,0 +1,166 @@
+
+    :root { --table-scale: 1; }
+    * { box-sizing: border-box; }
+
+    .leaderboard {
+      width: 100%;
+      padding: 0;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .controls-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-col-content,
+    .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+      width: 100%;
+      white-space: nowrap !important;
+      line-height: 1.1;
+    }
+    .toggle-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+    }
+    .toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .toggle input {
+      inline-size: 1rem;
+      block-size: 1rem;
+      margin: 0;
+    }
+    .table-shell {
+      width: 100%;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 0;
+    }
+    #harness-table {
+      width: max-content;
+      min-width: 0;
+    }
+    .status {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: #596273;
+    }
+    .tabulator {
+      width: max-content;
+      font-family: inherit;
+      font-size: calc(0.95rem * var(--table-scale));
+      border: 1px solid #d7dce4;
+      background: #ffffff;
+      color: inherit;
+    }
+    .tabulator .tabulator-header {
+      background: #f1f4f8;
+      border-bottom: 1px solid #d7dce4;
+      color: inherit;
+    }
+    .tabulator .tabulator-header .tabulator-col {
+      font-size: calc(0.95rem * var(--table-scale));
+      font-weight: 600;
+      background: #f1f4f8;
+      border-right: 0 !important;
+      transition: background-color 120ms ease;
+    }
+    .tabulator .tabulator-header .tabulator-col:hover {
+      background: #e7edf5;
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-header-filter {
+      margin-top: calc(0.35rem * var(--table-scale));
+    }
+    .tabulator .tabulator-header .tabulator-col .tabulator-header-filter input,
+    .tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {
+      width: 100%;
+      padding: calc(0.24rem * var(--table-scale)) calc(0.5rem * var(--table-scale));
+      border: 1px solid #d7dce4;
+      border-radius: 0;
+      background: #ffffff;
+      color: inherit;
+      font: inherit;
+    }
+    .tabulator .tabulator-row .tabulator-cell {
+      padding: calc(0.7rem * var(--table-scale)) calc(0.8rem * var(--table-scale));
+      border-right: 0 !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+    .tabulator .tabulator-row {
+      background: #ffffff;
+      border-bottom: 1px solid #e9edf2;
+    }
+    .tabulator .tabulator-row:nth-child(even) {
+      background: #f9fafc;
+    }
+    .tabulator .tabulator-row:hover {
+      background: #eaf2fc;
+    }
+    @media (max-width: 640px) {
+      :root {
+        font-size: 16px;
+      }
+      .leaderboard {
+        padding: 8px 8px 16px;
+      }
+      .controls {
+        gap: 8px 12px;
+        margin-bottom: 10px;
+      }
+      .toggle-list {
+        gap: 8px 12px;
+      }
+      .toggle {
+        gap: 0.35rem;
+        font-size: 0.85rem;
+      }
+      .toggle input {
+        inline-size: 0.9rem;
+        block-size: 0.9rem;
+      }
+      .tabulator {
+        width: 100%;
+        font-size: calc(0.82rem * var(--table-scale));
+      }
+      .tabulator .tabulator-header .tabulator-col {
+        font-size: calc(0.8rem * var(--table-scale));
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-col-content {
+        padding: 4px 1px 4px 3px;
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-header-filter input,
+      .tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {
+        padding: calc(0.16rem * var(--table-scale)) calc(0.18rem * var(--table-scale));
+      }
+      .tabulator .tabulator-tableholder {
+        overflow-x: auto !important;
+        overscroll-behavior-x: contain;
+        touch-action: pan-x pan-y;
+      }
+      .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-sorter,
+      .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-sorter .tabulator-arrow {
+        display: none !important;
+      }
+      .tabulator .tabulator-row .tabulator-cell {
+        padding: calc(0.4rem * var(--table-scale)) calc(0.22rem * var(--table-scale));
+      }
+    }
