@@ -148,7 +148,7 @@
       {title: "Easy", field: "easy", sorter: "number", formatter: scoreFormatter, minWidth: 70, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
       {title: "Medium", field: "medium", sorter: "number", formatter: scoreFormatter, minWidth: 74, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
       {title: "Hard", field: "hard", sorter: "number", formatter: scoreFormatter, minWidth: 70, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
-      {title: "Insane", field: "insane", sorter: "number", formatter: scoreFormatter, minWidth: 76, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
+      {title: "Extreme", field: "insane", sorter: "number", formatter: scoreFormatter, minWidth: 76, widthGrow: 1, widthShrink: 1, hozAlign: "left", headerFilter: "input", headerFilterFunc: percentHeaderFilter},
     ];
     const baseDefaultFields = ["model", "agent", "web_access", "overall", "estimated_cost_usd", "elapsed_s", "easy", "medium", "hard", "insane"];
     const compactDefaultFields = ["model", "agent", "web_access", "overall", "estimated_cost_usd", "elapsed_s"];
